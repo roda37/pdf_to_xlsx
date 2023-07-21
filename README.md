@@ -1,1 +1,4 @@
-# pdf_to_xlsx
+./install.sh # to install the program
+./run # to run it
+
+# Made for Arch Linux
