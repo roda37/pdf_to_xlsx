@@ -49,7 +49,6 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                 # Clean up the temporary files
                 os.remove(output_file)
                 os.remove(filename)
-                os.system("rm ./http/*")
 
             except FileNotFoundError:
                 self.send_error(404, "File not found")
@@ -142,13 +141,15 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         file_list.sort(key=lambda a: a.lower())
         f = BytesIO()
         displaypath = html.escape(urllib.parse.unquote(self.path))
-        f.write(b'<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">')
+        f.write(b'<!DOCTYPE html>')
         f.write((b'<html>\n<title>PDF to Excel</title>\n'))
         f.write(b"<hr>\n")
+        f.write(b'<body style="background-color: #f0f0f0;">\n')
         f.write(b"<form ENCTYPE=\"multipart/form-data\" method=\"post\">")
         f.write(b"<input name=\"file\" type=\"file\"/>")
         f.write(b"<input type=\"submit\" value=\"Create XLSX\"/></form>\n")
         f.write(b"<hr>\n<ul>\n")
+        f.write(b"</body>\n")
         for filename in file_list:
             fullpath = os.path.join(path, filename)
             displayname = linkname = filename
@@ -211,3 +212,4 @@ def test(HandlerClass=SimpleHTTPRequestHandler, ServerClass=http.server.HTTPServ
 
 if __name__ == '__main__':
     test()
+

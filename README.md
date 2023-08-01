@@ -1,4 +1,8 @@
-./install.sh # to install the program
-./run # to run it
+Initial install will create env, install dependencies
+    
+    ./install.sh 
 
-# Made for Arch Linux
+Running the program as a local web server
+
+    ./run
+

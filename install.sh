@@ -1,4 +1,4 @@
 python -m venv env
 source env/bin/activate
 pip install tabula-py pandas openpyxl
-sudo pacman -Sy --noconfirm jdk-openjdk
+sudo pacman -Sy jdk-openjdk
